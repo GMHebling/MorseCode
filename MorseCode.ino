@@ -17,10 +17,10 @@ unsigned long intervalo;
 
 int inputBT = 3;
 
-int bFlag=0;
+volatile int bFlag=0;
 
 void setup() {
-  attachInterrupt(digitalPinToInterrupt(inputBT), setFlag, Change);
+  attachInterrupt(digitalPinToInterrupt(inputBT), setFlag, CHANGE);
   Serial.begin(9600);
   
 }
