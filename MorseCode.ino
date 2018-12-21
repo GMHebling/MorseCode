@@ -13,12 +13,34 @@ float dashTime = 1.5;
 unsigned long currentTime;
 unsigned long lastTime;
 
-void setup() {
-  // put your setup code here, to run once:
+unsigned long intervalo;
 
+int inputBT = 3;
+
+int bFlag=0;
+
+void setup() {
+  attachInterrupt(digitalPinToInterrupt(inputBT), setFlag, Change);
+  Serial.begin(9600);
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly: 
-  
+  if (bFlag==1){
+    currentTime = millis();
+  }
+  else{
+    lastTime = currentTime;
+    currentTime = millis();
+    intervalo = currentTime - lastTime;
+  }
+}
+    
+void setFlag(){
+  if (bFlag==0){
+    bFlag=1;
+  }
+  else{
+    bFlag=0;
+  }
 }
