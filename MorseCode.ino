@@ -9,6 +9,7 @@ const char* alfabeto[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
                         
 float dotTime = 0.5;
 float dashTime = 1.5;
+float spaceTime = 1.5;
 
 unsigned long currentTime;
 unsigned long lastTime;
@@ -20,7 +21,7 @@ int inputBT = 3;
 volatile int bFlag=0;
 
 void setup() {
-  attachInterrupt(digitalPinToInterrupt(inputBT), setFlag, CHANGE);
+  attachInterrupt(inputBT, setFlag, CHANGE);
   Serial.begin(9600);
   
 }
